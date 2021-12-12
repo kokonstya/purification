@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:purification/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,6 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final Widget svg = SvgPicture.asset('assets/images/on_boarding_image_1.svg',
+      semanticsLabel: 'Acme Logo');
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -97,6 +102,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
+            ),
+            ElevatedButton(
+              child: Text('go to welcome screen'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+              ),
             ),
             Text(
               '$_counter',
